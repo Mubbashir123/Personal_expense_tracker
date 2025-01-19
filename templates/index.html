@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Expense Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Personal Expense Tracker</h1>
+        
+        <div class="summary-cards">
+            <div class="card">
+                <h3>Total Income</h3>
+                <p id="total-income">$0</p>
+            </div>
+            <div class="card">
+                <h3>Total Expenses</h3>
+                <p id="total-expenses">$0</p>
+            </div>
+            <div class="card">
+                <h3>Total Savings</h3>
+                <p id="total-savings">$0</p>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <div class="form-section">
+                <h2>Add Income</h2>
+                <form id="income-form">
+                    <input type="number" id="income-amount" placeholder="Amount" required>
+                    <input type="text" id="income-source" placeholder="Source" required>
+                    <button type="submit">Add Income</button>
+                </form>
+            </div>
+
+            <div class="form-section">
+                <h2>Add Expense</h2>
+                <form id="expense-form">
+                    <input type="number" id="expense-amount" placeholder="Amount" required>
+                    <select id="expense-category" required>
+                        <option value="">Select Category</option>
+                        <option value="Food">Food</option>
+                        <option value="Transport">Transport</option>
+                        <option value="Utilities">Utilities</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <input type="text" id="expense-description" placeholder="Description" required>
+                    <button type="submit">Add Expense</button>
+                </form>
+            </div>
+
+            <div class="form-section">
+                <h2>Add Saving</h2>
+                <form id="saving-form">
+                    <input type="number" id="saving-amount" placeholder="Amount" required>
+                    <input type="text" id="saving-description" placeholder="Description" required>
+                    <button type="submit">Add Saving</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="charts-container">
+            <div class="chart-card">
+                <h2>Expense Distribution</h2>
+                <canvas id="expense-chart"></canvas>
+            </div>
+        </div>
+
+        <div class="recent-transactions">
+            <h2>Recent Transactions</h2>
+            <div id="recent-list"></div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
